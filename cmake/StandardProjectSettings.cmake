@@ -23,8 +23,8 @@ if(ENABLE_IPO)
     endif()
 endif()
 
-#set(THREADS_PREFER_PTHREAD_FLAG ON)
-#find_package(Threads REQUIRED)
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
 
 option(ENFORCE_NATIVE_ARC "Force march=native for compiler" ON)
 if (ENFORCE_NATIVE_ARC)
@@ -43,7 +43,22 @@ if (ENABLE_FPERMISSIVE)
     add_definitions("-fpermissive")
 endif()
 
-option(ENABLE_STRIPPING "Enables binary stripping (reduce file size) (aka -s)" ON)
-if (ENABLE_STRIPPING)
-    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
+if (CMAKE_BUILD_TYPE STREQUAL "Release")
+    option(ENABLE_STRIPPING "Enables binary stripping (reduce file size) (aka -s)" OFF)
+    if (ENABLE_STRIPPING)
+        set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
+    endif()
 endif()
+
+# Set -O0 for Debug builds
+set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g" CACHE STRING "Debug flags" FORCE)
+set(CMAKE_C_FLAGS_DEBUG "-O0 -g" CACHE STRING "Debug C flags" FORCE)
+
+# Set -O3 for all other build types
+set(CMAKE_CXX_FLAGS_RELEASE "-O3" CACHE STRING "Release flags" FORCE)
+set(CMAKE_C_FLAGS_RELEASE "-O3" CACHE STRING "Release C flags" FORCE)
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O3 -g" CACHE STRING "RelWithDebInfo flags" FORCE)
+set(CMAKE_C_FLAGS_RELWITHDEBINFO "-O3 -g" CACHE STRING "RelWithDebInfo C flags" FORCE)
+set(CMAKE_CXX_FLAGS_MINSIZEREL "-O3" CACHE STRING "MinSizeRel flags" FORCE)
+set(CMAKE_C_FLAGS_MINSIZEREL "-O3" CACHE STRING "MinSizeRel C flags" FORCE)
+

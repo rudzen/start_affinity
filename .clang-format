@@ -23,18 +23,18 @@ BinPackParameters: true
 BraceWrapping:
   AfterClass: false
   AfterControlStatement: Always
-  AfterEnum: true
-  AfterFunction: true
-  AfterNamespace: true
+  AfterEnum: false
+  AfterFunction: false
+  AfterNamespace: false
   AfterObjCDeclaration: false
-  AfterStruct: true
+  AfterStruct: false
   AfterUnion: false
   BeforeCatch: false
   BeforeElse: false
   IndentBraces: false
   SplitEmptyFunction: false
-  SplitEmptyNamespace: true
-  SplitEmptyRecord: true
+  SplitEmptyNamespace: false
+  SplitEmptyRecord: false
 BreakBeforeBinaryOperators: NonAssignment
 BreakBeforeBraces: Custom
 BreakBeforeInheritanceComma: true
@@ -76,10 +76,7 @@ MacroBlockBegin: ''
 MacroBlockEnd: ''
 MaxEmptyLinesToKeep: 2
 NamespaceIndentation: Inner
-ObjCBlockIndentWidth: 7
-ObjCSpaceAfterProperty: true
-ObjCSpaceBeforeProtocolList: false
-PointerAlignment: Right
+PointerAlignment: Left
 ReflowComments: true
 SortIncludes: false
 SortUsingDeclarations: false

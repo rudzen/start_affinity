@@ -1,0 +1,66 @@
+title: StartAffinity
+description: High-Performance CPU Affinity Control for Windows
+baseurl: "/start_affinity"
+url: "https://rudzen.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# SEO settings
+author: Rudy Alex Kohn
+twitter:
+  username: yourusername
+  card: summary_large_image
+
+social:
+  name: StartAffinity
+  links:
+    - https://github.com/rudzen/start_affinity
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "_docs"
+      type: "docs"
+    values:
+      layout: "docs"
+
+# Custom variables
+version: "1.4.1"
+github_repo: "rudzen/start_affinity"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - LICENSE
+  - CMakeLists.txt
+  - src/
+  - cmake/
+  - cmake-build-*/
+  - exe/
